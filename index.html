@@ -1,1 +1,205 @@
-工事中
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f2f0e9">
+	<meta name="description" content="ただいまサイトを準備しています。公開まで、もう少しお待ちください。">
+	<title>ただいま準備中です</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f2f0e9;
+			--ink: #202b27;
+			--muted: #68736c;
+			--signal: #ef6848;
+			--line: rgba(32, 43, 39, .18);
+			font-family: "Noto Sans JP", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			min-width: 320px;
+			min-height: 100vh;
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+		}
+
+		.page {
+			width: min(100% - 64px, 1440px);
+			min-height: 100vh;
+			margin-inline: auto;
+			display: grid;
+			grid-template-rows: auto 1fr auto;
+		}
+
+		.topbar, .footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font: 500 11px/1.4 "DM Mono", monospace;
+			letter-spacing: .08em;
+			text-transform: uppercase;
+		}
+
+		.topbar {
+			min-height: 78px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.wordmark { display: flex; align-items: center; gap: 10px; }
+		.mark { width: 10px; height: 10px; background: var(--signal); transform: rotate(45deg); }
+		.status { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); }
+		.status::before { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); content: ""; }
+
+		main {
+			display: grid;
+			grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+			align-items: center;
+			gap: clamp(40px, 8vw, 120px);
+			padding-block: clamp(48px, 9vh, 112px);
+		}
+
+		.copy { padding-block: 18px; }
+		.eyebrow {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0 0 28px;
+			color: var(--signal);
+			font: 500 12px/1.4 "DM Mono", monospace;
+			letter-spacing: .1em;
+		}
+
+		.eyebrow::before { width: 34px; height: 1px; background: currentColor; content: ""; }
+
+		h1 {
+			margin: 0;
+			font-size: clamp(38px, 5.25vw, 76px);
+			font-weight: 700;
+			line-height: 1.45;
+			letter-spacing: 0;
+		}
+
+		h1 span { display: block; }
+		h1 .accent { color: var(--signal); }
+
+		.message {
+			max-width: 27em;
+			margin: 26px 0 0;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 2;
+		}
+
+		.index {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin-top: 54px;
+			color: var(--muted);
+			font: 400 10px/1.5 "DM Mono", monospace;
+			letter-spacing: .06em;
+		}
+
+		.index::before { width: 42px; height: 1px; background: var(--line); content: ""; }
+
+		figure {
+			position: relative;
+			min-height: min(62vh, 620px);
+			margin: 0;
+			overflow: hidden;
+			background: #c4c7bd;
+		}
+
+		figure::after {
+			position: absolute;
+			inset: 0;
+			border: 1px solid rgba(32, 43, 39, .12);
+			content: "";
+			pointer-events: none;
+		}
+
+		figure img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			min-height: min(62vh, 620px);
+			object-fit: cover;
+			object-position: 50% 50%;
+			animation: arrive 900ms cubic-bezier(.2,.7,.2,1) both;
+		}
+
+		figcaption {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			padding: 13px 16px;
+			background: var(--paper);
+			color: var(--muted);
+			font: 400 10px/1.4 "DM Mono", monospace;
+			letter-spacing: .06em;
+		}
+
+		.footer {
+			min-height: 64px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+		}
+
+		@keyframes arrive {
+			from { opacity: .4; transform: scale(1.025); }
+			to { opacity: 1; transform: scale(1); }
+		}
+
+		@media (max-width: 760px) {
+			.page { width: min(100% - 40px, 560px); }
+			.topbar { min-height: 64px; }
+			main { grid-template-columns: 1fr; gap: 36px; padding-block: 48px 32px; }
+			.copy { padding: 0; }
+			.eyebrow { margin-bottom: 20px; }
+			h1 { font-size: clamp(37px, 10vw, 58px); }
+			.message { margin-top: 18px; font-size: 13px; }
+			.index { margin-top: 30px; }
+			figure, figure img { min-height: 42vh; }
+			.footer { min-height: 58px; font-size: 10px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header class="topbar">
+			<div class="wordmark"><span class="mark" aria-hidden="true"></span><span>MY SITE</span></div>
+			<span class="status">Coming soon</span>
+		</header>
+
+		<main>
+			<section class="copy" aria-labelledby="page-title">
+				<p class="eyebrow">A NEW PAGE IS TAKING SHAPE</p>
+				<h1 id="page-title"><span>ただいま、</span><span class="accent">準備中です。</span></h1>
+				<p class="message">新しいサイトを準備しています。<br>公開まで、もう少しだけお待ちください。</p>
+				<p class="index">PLEASE COME BACK SOON <span>— 01</span></p>
+			</section>
+
+			<figure>
+				<img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="光の差し込む、建設途中のような現代建築" fetchpriority="high">
+				<figcaption>IN THE MAKING / 2026</figcaption>
+			</figure>
+		</main>
+
+		<footer class="footer">
+			<span>MY SITE</span>
+			<span>© 2026</span>
+		</footer>
+	</div>
+</body>
+</html>
