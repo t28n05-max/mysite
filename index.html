@@ -54,7 +54,15 @@
 
 		.wordmark { display: flex; align-items: center; gap: 10px; }
 		.mark { width: 10px; height: 10px; background: var(--signal); transform: rotate(45deg); }
-		.status { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); }
+		.status {
+			display: inline-flex;
+			align-items: center;
+			gap: 9px;
+			color: var(--ink);
+			font-size: 12px;
+			text-decoration: none;
+		}
+		.status:hover { color: var(--signal); }
 		.status::before { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); content: ""; }
 
 		main {
@@ -103,9 +111,10 @@
 			gap: 14px;
 			margin-top: 54px;
 			color: var(--muted);
-			font: 400 10px/1.5 "DM Mono", monospace;
+			font: 500 13px/1.5 "Noto Sans JP", sans-serif;
 			letter-spacing: .06em;
 			text-decoration: none;
+			color: var(--signal);
 		}
 
 		.index::before { width: 42px; height: 1px; background: var(--line); content: ""; }
@@ -182,7 +191,7 @@
 	<div class="page">
 		<header class="topbar">
 			<div class="wordmark"><span class="mark" aria-hidden="true"></span><span>MY SITE</span></div>
-			<span class="status">Coming soon</span>
+			<a class="status" href="works.html">作品紹介 <span aria-hidden="true">↗</span></a>
 		</header>
 
 		<main>
