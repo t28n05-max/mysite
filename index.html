@@ -105,9 +105,12 @@
 			color: var(--muted);
 			font: 400 10px/1.5 "DM Mono", monospace;
 			letter-spacing: .06em;
+			text-decoration: none;
 		}
 
 		.index::before { width: 42px; height: 1px; background: var(--line); content: ""; }
+		.index:hover { color: var(--signal); }
+		.index:focus-visible { outline: 2px solid var(--signal); outline-offset: 5px; }
 
 		figure {
 			position: relative;
@@ -187,7 +190,7 @@
 				<p class="eyebrow">A NEW PAGE IS TAKING SHAPE</p>
 				<h1 id="page-title"><span>ただいま、</span><span class="accent">準備中です。</span></h1>
 				<p class="message">新しいサイトを準備しています。<br>公開まで、もう少しだけお待ちください。</p>
-				<p class="index">PLEASE COME BACK SOON <span>— 01</span></p>
+				<a class="index" href="works.html">作品を見る <span>VIEW WORKS →</span></a>
 			</section>
 
 			<figure>

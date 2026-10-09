@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f2f0e9">
+	<meta name="description" content="MY SITEの作品紹介ページです。Web、グラフィック、写真の制作サンプルをご覧いただけます。">
+	<title>作品紹介 | MY SITE</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--paper: #f2f0e9;
+			--ink: #202b27;
+			--muted: #68736c;
+			--signal: #ef6848;
+			--line: rgba(32, 43, 39, .18);
+			font-family: "Noto Sans JP", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			min-width: 320px;
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+		}
+
+		a { color: inherit; }
+
+		.page {
+			width: min(100% - 64px, 1320px);
+			margin-inline: auto;
+		}
+
+		.topbar, .footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font: 500 11px/1.4 "DM Mono", monospace;
+			letter-spacing: .08em;
+			text-transform: uppercase;
+		}
+
+		.topbar { min-height: 78px; border-bottom: 1px solid var(--line); }
+		.wordmark { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+		.mark { width: 10px; height: 10px; background: var(--signal); transform: rotate(45deg); }
+		.nav-link { color: var(--muted); text-decoration: none; }
+		.nav-link:hover { color: var(--signal); }
+		:focus-visible { outline: 2px solid var(--signal); outline-offset: 5px; }
+
+		.intro {
+			display: grid;
+			grid-template-columns: 1.15fr .85fr;
+			align-items: end;
+			gap: 48px;
+			padding-block: clamp(76px, 12vw, 154px) 86px;
+		}
+
+		.eyebrow, .sample-note, .project-meta, .section-label {
+			font: 500 11px/1.5 "DM Mono", monospace;
+			letter-spacing: .08em;
+		}
+
+		.eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: var(--signal); }
+		.eyebrow::before { width: 34px; height: 1px; background: currentColor; content: ""; }
+
+		h1 {
+			max-width: 11em;
+			margin: 0;
+			font-size: clamp(43px, 7vw, 88px);
+			font-weight: 700;
+			line-height: 1.3;
+			letter-spacing: 0;
+		}
+
+		.intro-copy { max-width: 390px; padding-bottom: 8px; }
+		.intro-copy p { margin: 0; color: var(--muted); font-size: 14px; line-height: 2; }
+		.sample-note { display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; color: var(--signal); }
+		.sample-note::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; content: ""; }
+
+		.gallery { padding-bottom: 104px; }
+		.gallery-heading {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			margin-bottom: 24px;
+			padding-bottom: 14px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.gallery-heading h2 { margin: 0; font-size: 15px; font-weight: 500; }
+		.section-label { color: var(--muted); }
+		.work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+		.work { min-width: 0; }
+
+		.work-image {
+			position: relative;
+			aspect-ratio: 4 / 3;
+			overflow: hidden;
+			background: #d5d6cf;
+		}
+
+		.work-image img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 500ms cubic-bezier(.2,.7,.2,1);
+		}
+
+		.work:hover .work-image img { transform: scale(1.035); }
+		.work:nth-child(2) .work-image img { object-position: 50% 60%; }
+		.work:nth-child(3) .work-image img { object-position: 50% 55%; }
+		.project-meta { display: flex; justify-content: space-between; gap: 12px; margin-top: 19px; color: var(--muted); }
+		.project-meta span:last-child { text-align: right; }
+		.work h3 { margin: 10px 0 7px; font-size: 19px; font-weight: 500; line-height: 1.6; }
+		.work p { max-width: 34em; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.9; }
+
+		.footer { min-height: 66px; border-top: 1px solid var(--line); color: var(--muted); }
+
+		@media (max-width: 760px) {
+			.page { width: min(100% - 40px, 560px); }
+			.topbar { min-height: 64px; }
+			.intro { grid-template-columns: 1fr; gap: 28px; padding-block: 72px 64px; }
+			.eyebrow { margin-bottom: 18px; }
+			h1 { font-size: clamp(42px, 11vw, 66px); }
+			.intro-copy p { font-size: 13px; }
+			.sample-note { margin-top: 18px; }
+			.gallery { padding-bottom: 72px; }
+			.work-grid { grid-template-columns: 1fr; gap: 38px; }
+			.work-image { aspect-ratio: 5 / 3; }
+			.work h3 { font-size: 18px; }
+			.footer { min-height: 58px; font-size: 10px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header class="topbar">
+			<a class="wordmark" href="index.html" aria-label="MY SITE トップページ">
+				<span class="mark" aria-hidden="true"></span><span>MY SITE</span>
+			</a>
+			<a class="nav-link" href="index.html">Back to top ↗</a>
+		</header>
+
+		<main>
+			<section class="intro" aria-labelledby="page-title">
+				<div>
+					<p class="eyebrow">WORKS / SELECTED PROJECTS</p>
+					<h1 id="page-title">つくったもの、<br>考えたこと。</h1>
+				</div>
+				<div class="intro-copy">
+					<p>Web、グラフィック、写真。アイデアを形にした制作物を紹介するページです。</p>
+					<span class="sample-note">以下はレイアウト確認用のサンプルです</span>
+				</div>
+			</section>
+
+			<section class="gallery" aria-labelledby="gallery-title">
+				<div class="gallery-heading">
+					<h2 id="gallery-title">作品一覧</h2>
+					<span class="section-label">01 — 03</span>
+				</div>
+
+				<div class="work-grid">
+					<article class="work">
+						<div class="work-image">
+							<img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="自然光が差し込む明るいワークスペース" loading="lazy">
+						</div>
+						<div class="project-meta"><span>WEB DESIGN</span><span>SAMPLE / 2026</span></div>
+						<h3>カフェのウェブサイト</h3>
+						<p>架空のカフェを想定した、写真と余白を生かすサイトデザイン。</p>
+					</article>
+
+					<article class="work">
+						<div class="work-image">
+							<img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="ノートや紙ものが並ぶデスク" loading="lazy">
+						</div>
+						<div class="project-meta"><span>IDENTITY</span><span>SAMPLE / 2026</span></div>
+						<h3>暮らしの道具のブランド</h3>
+						<p>架空の生活雑貨ブランドを題材にした、ロゴとビジュアルの提案。</p>
+					</article>
+
+					<article class="work">
+						<div class="work-image">
+							<img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="夕暮れの都市に立ち並ぶ建物" loading="lazy">
+						</div>
+						<div class="project-meta"><span>PHOTOGRAPHY</span><span>SAMPLE / 2026</span></div>
+						<h3>街の表情を記録する</h3>
+						<p>光や時間によって変わる街の風景を集めた、写真シリーズのサンプル。</p>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<span>MY SITE / WORKS</span>
+			<span>© 2026</span>
+		</footer>
+	</div>
+</body>
+</html>
